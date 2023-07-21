@@ -17,5 +17,8 @@ form.addEventListener('submit', async (event) => {
     //redirijo al login
     //muestro modal
     window.location.replace('/login');
+  } else {
+    // Mostrar el mensaje de error
+    errorMessage.style.display = 'block';
   }
 });

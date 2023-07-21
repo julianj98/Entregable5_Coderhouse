@@ -6,6 +6,11 @@ const router = Router();
 router.post('/register',async(req,res)=>{
     const { first_name, last_name, email, password } = req.body;
 
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: 'El correo electrónico ya está registrado' });
+    }
+  
     // Crear un nuevo documento del modelo "User" sin incluir el campo "rol"
     const newUser = new userModel({ first_name, last_name, email, password });
   
